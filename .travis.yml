@@ -45,6 +45,7 @@ before_install:
   - npm install --save-dev travis-after-all
 
 install:
+  - java -XX:+PrintFlagsFinal -version | egrep 'Perm|Heap'
   # make sure we run integration tests against the artifact we deploy eventually
   - |
       if [[ "$TEST" == "integration" ]]; then

@@ -31,6 +31,8 @@ echo "**************************************************************************
 echo
 echo
 
+while true; do COLUMNS=2000 top -bc -n1; sleep 10; done &
+
 set -o xtrace
 for element in "${versions_array[@]}"; do
 	GRADLE_VERSION="$element" ./gradlew integrationTest --exclude-task publishToMavenLocal
