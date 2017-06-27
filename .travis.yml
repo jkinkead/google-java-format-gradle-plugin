@@ -9,6 +9,10 @@ cache:
   - "$HOME/.gradle/caches/"
   - "$HOME/.gradle/wrapper/"
   - "$HOME/.groovy/grapes/"
+jobs:
+  include:
+    - stage: prepare cache
+      script: jdk_switcher use openjdk7 && ./gradlew --no-daemon publishToMavenLocal && jdk_switcher use $TRAVIS_JDK_VERSION
 
 jdk:
   - openjdk7
