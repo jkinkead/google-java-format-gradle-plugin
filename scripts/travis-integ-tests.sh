@@ -17,7 +17,10 @@ fi
 
 
 for element in "${versions_array[@]}"; do
-	echo "*********************************************************************************"
+echo
+echo
+echo
+echo "*********************************************************************************"
+echo
 	(set -x; GRADLE_VERSION="$element" ./gradlew integrationTest --exclude-task publishToMavenLocal)
-	echo "*********************************************************************************"
 done
