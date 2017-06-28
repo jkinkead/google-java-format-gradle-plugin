@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
 
 # This script runs the integration tests against multiple Gradle versions.
 # It is used in the travis 'script' step (see ../.travis.yml).
@@ -16,8 +15,6 @@ echo "**************************************************************************
 echo
 echo
 
-set -o xtrace
-. jdk_switcher.sh
 jdk_switcher use openjdk7
 ./gradlew publishToMavenLocal
 jdk_switcher use $TRAVIS_JDK_VERSION
