@@ -25,6 +25,8 @@ jdk: openjdk7
 jobs:
   include:
     - stage: test
+      script: declare -f
+    - stage: test
       env: TYPE=unit
       script: ./gradlew test
     - env:
