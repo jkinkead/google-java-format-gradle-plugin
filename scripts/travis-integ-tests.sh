@@ -15,9 +15,16 @@ echo "**************************************************************************
 echo
 echo
 
-jdk_switcher use openjdk7
+if [[ "$TRAVIS_JDK_VERSION" != "openjdk7" ]]; then
+	jdk_switcher use openjdk7
+fi
+
 ./gradlew publishToMavenLocal
-jdk_switcher use $TRAVIS_JDK_VERSION
+
+if [[ "$TRAVIS_JDK_VERSION" != "openjdk7" ]]; then
+	jdk_switcher use $TRAVIS_JDK_VERSION
+fi
+
 
 for element in "${versions_array[@]}"; do
 	true "****************************************************************************"
