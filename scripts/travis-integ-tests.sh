@@ -17,6 +17,12 @@ echo
 echo
 
 set -o xtrace
+jdk_switcher use openjdk7
+./gradlew publishToMavenLocal
+jdk_switcher use $TRAVIS_JDK_VERSION
+
 for element in "${versions_array[@]}"; do
-	GRADLE_VERSION="$element" ./gradlew --no-daemon integrationTest --exclude-task publishToMavenLocal
+	true "****************************************************************************"
+	GRADLE_VERSION="$element" ./gradlew integrationTest --exclude-task publishToMavenLocal
+	true "****************************************************************************"
 done
