@@ -22,6 +22,7 @@ jobs:
   include:
     - stage: test
       env: TYPE=unit
+      jdk: oraclejdk8
       script: ./gradlew test
     - env:
         - TYPE=integration
