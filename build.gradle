@@ -10,8 +10,7 @@ plugins {
 
 version = file('src/main/resources/VERSION').text.trim()
 
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
+sourceCompatibility = targetCompatibility = 1.8
 
 repositories {
     jcenter()
