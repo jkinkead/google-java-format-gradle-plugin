@@ -33,5 +33,7 @@ echo
 
 set -o xtrace
 for element in "${versions_array[@]}"; do
+	# Workaround for https://github.com/gradle/gradle/issues/2421:
+	JAVA_HOME=$(jdk_switcher home openjdk8) ./gradlew --no-daemon integrationTest --tests *IntegrationTest*exclude* >/dev/null
 	GRADLE_VERSION="$element" ./gradlew --no-daemon integrationTest --exclude-task publishToMavenLocal
 done
