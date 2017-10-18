@@ -44,13 +44,13 @@ install:
   # make sure we run integration tests against the artifact we deploy eventually
   - |
       if [[ "$TEST" == "integration" ]]; then
-        jdk_switcher use openjdk8 && ./gradlew --no-daemon publishToMavenLocal && jdk_switcher use $TRAVIS_JDK_VERSION
+        jdk_switcher use openjdk8 && ./gradlew publishToMavenLocal && jdk_switcher use $TRAVIS_JDK_VERSION
       fi
 
 script:
   - |
       if [[ "$TEST" == "units" ]]; then
-        ./gradlew --no-daemon test
+        ./gradlew test
       else
         scripts/travis-integ-tests.sh
       fi
