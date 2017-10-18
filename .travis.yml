@@ -42,6 +42,10 @@ matrix:
       env: TEST=integration GRADLE_VERSIONS=2.0
 
 before_install:
+  # Workaround for https://github.com/gradle/gradle/issues/2421:
+  # download all Gradle distributions with openjdk8
+  # TODO: find something better, this massively slows down the build
+  - JAVA_HOME=$(jdk_switcher home openjdk8) ./gradlew --no-daemon integTest >/dev/null && ./gradlew --no-daemon clean
   - npm install --save-dev travis-after-all
 
 install:
